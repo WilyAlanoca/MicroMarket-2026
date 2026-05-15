@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Xiaomi Style</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/InicioSesion.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MicroMarket.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center text-xiaomi">Iniciar Sesión</h3>
+                        <form asp-action="Login" method="post">
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                <label for="email" class="text-xiaomi">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Ingresas tu correo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-xiaomi">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                            </div>
+                            <button type="submit" class="btn btn-xiaomi btn-block">Iniciar Sesión</button>
+                        </form>
+                        
+                        @if (TempData["LoginError"] != null)
+                        {
+                            <div class="alert alert-danger">@TempData["LoginError"]</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+   
+</body>
+</html>
