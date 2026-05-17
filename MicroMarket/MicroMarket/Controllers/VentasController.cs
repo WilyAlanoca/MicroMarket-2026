@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MicroMarket.Contexto;
 using MicroMarket.Models;
+using MicroMarket.Models.ViewModels;
+using System.Text.Json;
 
 namespace MicroMarket.Controllers
 {
@@ -36,7 +38,10 @@ namespace MicroMarket.Controllers
 
             var venta = await _context.Ventas
                 .Include(v => v.Cliente)
+                .Include(v => v.Detalles)
+                    .ThenInclude(d => d.Producto)
                 .FirstOrDefaultAsync(m => m.VentaId == id);
+
             if (venta == null)
             {
                 return NotFound();
@@ -48,8 +53,17 @@ namespace MicroMarket.Controllers
         // GET: Ventas/Create
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "ClienteId", "Complemento");
-            return View();
+            CargarDatosCreate();
+
+            var model = new VentaCreateViewModel
+            {
+                Detalles = new List<DetalleVentaInput>
+        {
+            new DetalleVentaInput()
+        }
+            };
+
+            return View(model);
         }
 
         // POST: Ventas/Create
@@ -57,16 +71,116 @@ namespace MicroMarket.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VentaId,FechaEmision,ClienteId,MontoTotal,Estado")] Venta venta)
+        public async Task<IActionResult> Create(VentaCreateViewModel model)
         {
-            if (ModelState.IsValid)
+            model.Detalles = model.Detalles
+                .Where(d => d.ProductoId > 0 && d.Cantidad > 0)
+                .ToList();
+
+            if (!model.Detalles.Any())
             {
-                _context.Add(venta);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("", "Debe agregar al menos un producto a la venta.");
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "ClienteId", "Complemento", venta.ClienteId);
-            return View(venta);
+
+            if (!ModelState.IsValid)
+            {
+                CargarDatosCreate(model.ClienteId);
+                return View(model);
+            }
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var venta = new Venta
+                {
+                    ClienteId = model.ClienteId,
+                    FechaEmision = DateTime.Now,
+                    Estado = "Emitida",
+                    MontoTotal = 0
+                };
+
+                foreach (var item in model.Detalles)
+                {
+                    var producto = await _context.Productos.FindAsync(item.ProductoId);
+
+                    if (producto == null)
+                    {
+                        ModelState.AddModelError("", "Uno de los productos seleccionados no existe.");
+                        continue;
+                    }
+
+                    if (producto.Stock < item.Cantidad)
+                    {
+                        ModelState.AddModelError("", $"Stock insuficiente para {producto.Descripcion}. Stock disponible: {producto.Stock}.");
+                        continue;
+                    }
+
+                    var subtotal = producto.Precio * item.Cantidad;
+
+                    venta.Detalles.Add(new DetalleVenta
+                    {
+                        ProductoId = producto.ProductoId,
+                        Cantidad = item.Cantidad,
+                        PrecioUnitario = producto.Precio,
+                        SubTotal = subtotal
+                    });
+
+                    producto.Stock -= item.Cantidad;
+                    venta.MontoTotal += subtotal;
+
+                    if (producto.Stock <= producto.StockMinimo)
+                    {
+                        TempData["StockMinimo"] += $"El producto {producto.Descripcion} llegó al stock mínimo. ";
+                    }
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    await transaction.RollbackAsync();
+                    CargarDatosCreate(model.ClienteId);
+                    return View(model);
+                }
+
+                _context.Ventas.Add(venta);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                return RedirectToAction(nameof(Details), new { id = venta.VentaId });
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        private void CargarDatosCreate(int? clienteId = null)
+        {
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "ClienteId", "Info", clienteId);
+            ViewData["Productos"] = new SelectList(_context.Productos, "ProductoId", "Descripcion");
+
+            ViewData["ClientesJson"] = _context.Clientes
+                .Select(c => new
+                {
+                    c.ClienteId,
+                    c.NumeroDocumento,
+                    c.Complemento,
+                    c.NombreRazonSocial,
+                    c.Email
+                })
+                .ToList();
+                ViewData["ProductosJson"] = _context.Productos
+                .Select(p => new
+                {
+                    p.ProductoId,
+                    p.Descripcion,
+                    p.Precio,
+                    p.Stock,
+                    p.StockMinimo
+                })
+                .ToList();
         }
 
         // GET: Ventas/Edit/5

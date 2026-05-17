@@ -8,15 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using MicroMarket.Contexto;
 using MicroMarket.Models;
 
+using Microsoft.AspNetCore.Identity;
+
 namespace MicroMarket.Controllers
 {
     public class VendedorsController : Controller
     {
         private readonly MyContext _context;
+        private readonly IPasswordHasher<Vendedor> _passwordHasher;
 
-        public VendedorsController(MyContext context)
+        public VendedorsController(MyContext context, IPasswordHasher<Vendedor> passwordHasher)
         {
             _context = context;
+            _passwordHasher = passwordHasher;
         }
 
         // GET: Vendedors
@@ -54,16 +58,29 @@ namespace MicroMarket.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VendedorId,Nombre,Email,Contraseña,Celular,Direccion,Rol")] Vendedor vendedor)
-        {
-            if (ModelState.IsValid)
+        public async Task<IActionResult> Create(
+        [Bind("VendedorId,Nombre,Email,Telefono,Direccion,Rol")] Vendedor vendedor,
+        string password)
             {
-                _context.Add(vendedor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (string.IsNullOrWhiteSpace(password))
+                {
+                    ModelState.AddModelError("PasswordHash", "La contraseña es obligatoria.");
+                }
+
+                ModelState.Remove("PasswordHash");
+
+                if (ModelState.IsValid)
+                {
+                    vendedor.PasswordHash = _passwordHasher.HashPassword(vendedor, password);
+
+                    _context.Add(vendedor);
+                    await _context.SaveChangesAsync();
+
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return View(vendedor);
             }
-            return View(vendedor);
-        }
 
         // GET: Vendedors/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -86,33 +103,43 @@ namespace MicroMarket.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VendedorId,Nombre,Email,Contraseña,Celular,Direccion,Rol")] Vendedor vendedor)
+        public async Task<IActionResult> Edit(
+        int id,
+        [Bind("VendedorId,Nombre,Email,Telefono,Direccion,Rol")] Vendedor vendedor,
+        string? nuevaPassword)
         {
             if (id != vendedor.VendedorId)
             {
                 return NotFound();
             }
 
+            ModelState.Remove("PasswordHash");
+
             if (ModelState.IsValid)
             {
-                try
+                var vendedorDb = await _context.Vendedores.FindAsync(id);
+
+                if (vendedorDb == null)
                 {
-                    _context.Update(vendedor);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
+
+                vendedorDb.Nombre = vendedor.Nombre;
+                vendedorDb.Email = vendedor.Email;
+                vendedorDb.Telefono = vendedor.Telefono;
+                vendedorDb.Direccion = vendedor.Direccion;
+                vendedorDb.Rol = vendedor.Rol;
+
+                if (!string.IsNullOrWhiteSpace(nuevaPassword))
                 {
-                    if (!VendedorExists(vendedor.VendedorId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    vendedorDb.PasswordHash = _passwordHasher.HashPassword(vendedorDb, nuevaPassword);
                 }
+
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(vendedor);
         }
 
@@ -140,12 +167,25 @@ namespace MicroMarket.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var vendedor = await _context.Vendedores.FindAsync(id);
+
             if (vendedor != null)
             {
+                if (vendedor.Rol == TipoRol.Administrador)
+                {
+                    var administradores = await _context.Vendedores
+                        .CountAsync(v => v.Rol == TipoRol.Administrador);
+
+                    if (administradores <= 1)
+                    {
+                        TempData["Error"] = "No puedes eliminar el último administrador.";
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+
                 _context.Vendedores.Remove(vendedor);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

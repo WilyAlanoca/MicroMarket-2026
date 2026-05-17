@@ -1,42 +1,185 @@
 ﻿@model MicroMarket.Models.Venta
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Recibo";
 }
 
-<h1>Details</h1>
+<div class="no-print">
+    <h1>Recibo de venta</h1>
 
-<div>
-    <h4>Venta</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaEmision)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaEmision)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cliente)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cliente.Complemento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MontoTotal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MontoTotal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-    </dl>
+    <div class="mb-3">
+        <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+        <button type="button" class="btn btn-primary" onclick="window.print()">Imprimir</button>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.VentaId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div id="recibo">
+    <div class="recibo-titulo">
+        <span class="recibo-marca">MicroMarket</span>
+        <span class="recibo-centro">Recibo</span>
+    </div>
+
+    <div class="recibo-datos">
+        <div class="dato-recibo">
+            <strong>Nro. Venta:</strong> @Model.VentaId
+        </div>
+
+        <div class="dato-recibo">
+            <strong>Cliente:</strong> @Model.Cliente?.NombreRazonSocial
+        </div>
+
+        <div class="dato-recibo">
+            <strong>Fecha:</strong> @Model.FechaEmision.ToString("dd/MM/yyyy HH:mm")
+        </div>
+
+        <div class="dato-recibo">
+            <strong>Documento:</strong>
+            @Model.Cliente?.NumeroDocumento
+            @if (!string.IsNullOrWhiteSpace(Model.Cliente?.Complemento) && Model.Cliente.Complemento != "0")
+            {
+                <text>-@Model.Cliente.Complemento</text>
+            }
+        </div>
+
+        <div class="dato-recibo">
+            <strong>Estado:</strong> @Model.Estado
+        </div>
+
+        <div class="dato-recibo">
+            <strong>Email:</strong> @Model.Cliente?.Email
+        </div>
+    </div>
+
+    <table class="tabla-recibo">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th class="text-end">Cantidad</th>
+                <th class="text-end">Precio unitario</th>
+                <th class="text-end">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var detalle in Model.Detalles)
+            {
+                <tr>
+                    <td>@detalle.Producto?.Descripcion</td>
+                    <td class="text-end">@detalle.Cantidad</td>
+                    <td class="text-end">@detalle.PrecioUnitario.ToString("0.00")</td>
+                    <td class="text-end">@detalle.SubTotal.ToString("0.00")</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3" class="text-end">Total</th>
+                <th class="text-end">@Model.MontoTotal.ToString("0.00")</th>
+            </tr>
+        </tfoot>
+    </table>
 </div>
+
+<style>
+    #recibo {
+        background: #ffffff;
+        color: #1f2933;
+        font-size: 14px;
+    }
+
+    .recibo-titulo {
+        position: relative;
+        background: #007a5a;
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 10px 14px;
+        border-radius: 4px;
+        margin-bottom: 35px;
+    }
+
+    .recibo-marca {
+        display: inline-block;
+    }
+
+    .recibo-centro {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .recibo-datos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 20px;
+        margin-bottom: 55px;
+    }
+
+    .dato-recibo {
+        border-left: 4px solid #007a5a;
+        border-radius: 4px;
+        padding: 14px 12px;
+        background: #f8faf9;
+        min-height: 52px;
+    }
+
+    .tabla-recibo {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .tabla-recibo th {
+            background: #007a5a;
+            color: white;
+            padding: 13px 10px;
+            border: 1px solid #d9e2df;
+        }
+
+        .tabla-recibo td {
+            padding: 13px 10px;
+            border: 1px solid #d9e2df;
+            background: white;
+        }
+
+        .tabla-recibo tfoot th {
+            background: #007a5a;
+            color: white;
+            border: 1px solid #d9e2df;
+        }
+
+    .text-end {
+        text-align: right;
+    }
+
+    @@media print {
+        header,
+        nav,
+        footer,
+        .no-print {
+            display: none !important;
+        }
+
+        body {
+            background: white !important;
+        }
+
+        .container {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        #recibo {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .recibo-titulo,
+        .tabla-recibo th,
+        .tabla-recibo tfoot th {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    }
+</style>

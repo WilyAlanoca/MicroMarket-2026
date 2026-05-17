@@ -4,14 +4,26 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Productos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success shadow-sm">
+        <i class="bi bi-plus-circle me-1"></i> Crear Nuevo
+    </a>
 </p>
+<form method="get" asp-action="Index" class="d-flex" role="search">
+    <input type="text"
+           name="tipoProductoBusqueda"
+           value="@Context.Request.Query["tipoProductoBusqueda"]"
+           class="form-control me-2"
+           placeholder="Buscar por tipo de producto" />
+    <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
+            <th>Imagen</th>
             <th>
                 @Html.DisplayNameFor(model => model.Precio)
             </th>
@@ -33,15 +45,23 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaVencimiento)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlFoto)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @if (!string.IsNullOrEmpty(item.UrlFoto))
+                {
+                    <img src="@item.UrlFoto" alt="Foto del producto" style="width:80px;height:80px;object-fit:cover;" />
+                }
+                else
+                {
+                    <span>Sin foto</span>
+                }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
@@ -61,15 +81,20 @@
                 @Html.DisplayFor(modelItem => item.TipoProducto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaVencimiento)
+                @if (item.FechaVencimiento.HasValue)
+                {
+                    @item.FechaVencimiento.Value.ToString("yyyy-MM-dd")
+                }
+                else
+                {
+                    <em>Sin fecha</em>
+                }   
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.UrlFoto)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ProductoId" class="btn btn-sm btn-warning me-1">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn btn-sm btn-info me-1">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductoId" class="btn btn-sm btn-danger">Borrar</a>
             </td>
         </tr>
 }

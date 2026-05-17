@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Proyecto\\MicroMarket\\MicroMarket\\",
+  "WorkspaceRootPath": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\proyecto\\micromarket\\micromarket\\micromarket\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|d:\\clases\\micromarket-2026\\micromarket\\micromarket\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\proyecto\\micromarket\\micromarket\\micromarket\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|d:\\clases\\micromarket-2026\\micromarket\\micromarket\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\proyecto\\micromarket\\micromarket\\micromarket\\controllers\\vendedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|d:\\clases\\micromarket-2026\\micromarket\\micromarket\\controllers\\vendedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\controllers\\vendedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\proyecto\\micromarket\\micromarket\\micromarket\\controllers\\proveedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|d:\\clases\\micromarket-2026\\micromarket\\micromarket\\controllers\\proveedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\controllers\\proveedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\proyecto\\micromarket\\micromarket\\micromarket\\controllers\\productoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|d:\\clases\\micromarket-2026\\micromarket\\micromarket\\controllers\\productoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\controllers\\productoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\proyecto\\micromarket\\micromarket\\micromarket\\migrations\\20260420024722_facturacionbolivia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|d:\\clases\\micromarket-2026\\micromarket\\micromarket\\migrations\\20260420024722_facturacionbolivia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\migrations\\20260420024722_facturacionbolivia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,15 +34,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "VentasController.cs",
-              "DocumentMoniker": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\VentasController.cs",
+              "DocumentMoniker": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\VentasController.cs",
               "RelativeDocumentMoniker": "MicroMarket\\Controllers\\VentasController.cs",
-              "ToolTip": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\VentasController.cs",
+              "ToolTip": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\VentasController.cs",
               "RelativeToolTip": "MicroMarket\\Controllers\\VentasController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -52,9 +56,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "VendedorsController.cs",
-              "DocumentMoniker": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\VendedorsController.cs",
+              "DocumentMoniker": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\VendedorsController.cs",
               "RelativeDocumentMoniker": "MicroMarket\\Controllers\\VendedorsController.cs",
-              "ToolTip": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\VendedorsController.cs",
+              "ToolTip": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\VendedorsController.cs",
               "RelativeToolTip": "MicroMarket\\Controllers\\VendedorsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -64,9 +68,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "ProveedorsController.cs",
-              "DocumentMoniker": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\ProveedorsController.cs",
+              "DocumentMoniker": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\ProveedorsController.cs",
               "RelativeDocumentMoniker": "MicroMarket\\Controllers\\ProveedorsController.cs",
-              "ToolTip": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\ProveedorsController.cs",
+              "ToolTip": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\ProveedorsController.cs",
               "RelativeToolTip": "MicroMarket\\Controllers\\ProveedorsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -76,9 +80,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "ProductoesController.cs",
-              "DocumentMoniker": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\ProductoesController.cs",
+              "DocumentMoniker": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\ProductoesController.cs",
               "RelativeDocumentMoniker": "MicroMarket\\Controllers\\ProductoesController.cs",
-              "ToolTip": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\ProductoesController.cs",
+              "ToolTip": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\ProductoesController.cs",
               "RelativeToolTip": "MicroMarket\\Controllers\\ProductoesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -88,22 +92,21 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ClientesController.cs",
-              "DocumentMoniker": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\ClientesController.cs",
+              "DocumentMoniker": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\ClientesController.cs",
               "RelativeDocumentMoniker": "MicroMarket\\Controllers\\ClientesController.cs",
-              "ToolTip": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Controllers\\ClientesController.cs",
+              "ToolTip": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Controllers\\ClientesController.cs",
               "RelativeToolTip": "MicroMarket\\Controllers\\ClientesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:09:34.323Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T03:09:34.323Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "20260420024722_FacturacionBolivia.cs",
-              "DocumentMoniker": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Migrations\\20260420024722_FacturacionBolivia.cs",
+              "DocumentMoniker": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Migrations\\20260420024722_FacturacionBolivia.cs",
               "RelativeDocumentMoniker": "MicroMarket\\Migrations\\20260420024722_FacturacionBolivia.cs",
-              "ToolTip": "E:\\Proyecto\\MicroMarket\\MicroMarket\\MicroMarket\\Migrations\\20260420024722_FacturacionBolivia.cs",
+              "ToolTip": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Migrations\\20260420024722_FacturacionBolivia.cs",
               "RelativeToolTip": "MicroMarket\\Migrations\\20260420024722_FacturacionBolivia.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

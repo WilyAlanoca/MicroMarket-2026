@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\Fondo\" />
+    <Folder Include="wwwroot\fotos\" />
   </ItemGroup>
 
   <ItemGroup>

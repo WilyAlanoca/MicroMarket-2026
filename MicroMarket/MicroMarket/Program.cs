@@ -3,6 +3,9 @@ using MicroMarket.Contexto;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 
+using Microsoft.AspNetCore.Http;
+using MicroMarket.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -38,7 +41,11 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(30);
 });
 
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
+
+
 
 if (!app.Environment.IsDevelopment())
 {

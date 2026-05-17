@@ -1,12 +1,12 @@
 ﻿@model MicroMarket.Models.Vendedor
+@using MicroMarket.Models
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar Vendedor</h1>
 
-<h4>Vendedor</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,9 +24,9 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PasswordHash" class="control-label"></label>
-                <input asp-for="PasswordHash" class="form-control" />
-                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                <label for="NuevaPassword" class="control-label">Nueva contraseña</label>
+                <input name="NuevaPassword" id="NuevaPassword" type="password" class="form-control" />
+                <small class="form-text text-muted">Déjalo vacío si no quieres cambiar la contraseña.</small>
             </div>
             <div class="form-group">
                 <label asp-for="Telefono" class="control-label"></label>
@@ -40,18 +40,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Rol" class="control-label"></label>
-                <select asp-for="Rol" class="form-control"></select>
+                <select asp-for="Rol" class="form-control" asp-items="Html.GetEnumSelectList<TipoRol>()"></select>
                 <span asp-validation-for="Rol" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-success shadow-sm">Volver</a>
 </div>
 
 @section Scripts {

@@ -14,6 +14,7 @@ namespace MicroMarket.Contexto
         public DbSet<Vendedor> Vendedores { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Venta> Ventas { get; set; }
+        
         public DbSet<MicroMarket.Models.Proveedor> Proveedor { get; set; } = default!;
     }
 }

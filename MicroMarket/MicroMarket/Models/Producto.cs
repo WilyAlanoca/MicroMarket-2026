@@ -49,7 +49,8 @@ namespace MicroMarket.Models
         public string? Info => $"{Descripcion}";
 
         // Relación uno a muchos con Ventas
-        public ICollection<Venta> DetallesVentas { get; set; } = new List<Venta>();
+        // Relación uno a muchos con Detalles de Venta
+        public ICollection<DetalleVenta> DetallesVentas { get; set; } = new List<DetalleVenta>();
     }
 
     // Validación personalizada para fechas futuras

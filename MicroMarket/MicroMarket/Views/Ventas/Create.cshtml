@@ -1,47 +1,204 @@
-﻿@model MicroMarket.Models.Venta
-
+﻿@model MicroMarket.Models.ViewModels.VentaCreateViewModel
+@using Microsoft.AspNetCore.Mvc.Rendering
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nueva venta";
+    var productos = ViewData["Productos"] as SelectList;
 }
 
-<h1>Create</h1>
+<h1>Nueva venta</h1>
 
-<h4>Venta</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FechaEmision" class="control-label"></label>
-                <input asp-for="FechaEmision" class="form-control" />
-                <span asp-validation-for="FechaEmision" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClienteId" class="control-label"></label>
-                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="MontoTotal" class="control-label"></label>
-                <input asp-for="MontoTotal" class="form-control" />
-                <span asp-validation-for="MontoTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ClienteId" class="control-label">Cliente</label>
+        <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId">
+            <option value="">Seleccione un cliente</option>
+        </select>
+        <span asp-validation-for="ClienteId" class="text-danger"></span>
     </div>
+
+    <div id="datos-cliente" class="border rounded p-3 mb-3" style="display:none;">
+        <h5>Datos del cliente</h5>
+        <div><strong>Documento:</strong> <span id="cliente-documento"></span></div>
+        <div><strong>Nombre/Razón Social:</strong> <span id="cliente-nombre"></span></div>
+        <div><strong>Email:</strong> <span id="cliente-email"></span></div>
+    </div>
+
+    <h4>Productos</h4>
+
+    <table class="table" id="tabla-detalles">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th style="width: 160px;">Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Detalles.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <select name="Detalles[@i].ProductoId" class="form-control">
+                            <option value="">Seleccione un producto</option>
+                            @foreach (var producto in productos!)
+                            {
+                                <option value="@producto.Value">@producto.Text</option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <input name="Detalles[@i].Cantidad" class="form-control" type="number" min="1" value="1" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<div class="border rounded p-3 mb-3">
+    <h4>Total a pagar: Bs <span id="total-pagar">0.00</span></h4>
+
+    <div class="form-group mb-3">
+        <label for="monto-pagado">Monto pagado</label>
+        <input id="monto-pagado" type="number" step="0.01" min="0" class="form-control" />
+    </div>
+
+    <h5>Cambio: Bs <span id="cambio">0.00</span></h5>
+
+    <div id="detalle-cambio" class="border rounded p-3 mb-3" style="display:none;"></div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<button type="button" class="btn btn-secondary" onclick="agregarFila()">Agregar producto</button>
+<button type="submit" class="btn btn-primary">Guardar venta</button>
+<a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+</form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const clientesLista = @Html.Raw(Json.Serialize(ViewData["ClientesJson"]));
+        const clientesPorId = {};
+
+        clientesLista.forEach(cliente => {
+            clientesPorId[cliente.clienteId] = cliente;
+        });
+
+        const clienteSelect = document.getElementById("ClienteId");
+        const datosCliente = document.getElementById("datos-cliente");
+
+        clienteSelect.addEventListener("change", function () {
+            const cliente = clientesPorId[this.value];
+
+            if (!cliente) {
+                datosCliente.style.display = "none";
+                return;
+            }
+
+            let documento = cliente.numeroDocumento ?? "";
+
+            if (cliente.complemento && cliente.complemento !== "0") {
+                documento += `-${cliente.complemento}`;
+            }
+
+            document.getElementById("cliente-documento").textContent = documento;
+            document.getElementById("cliente-nombre").textContent = cliente.nombreRazonSocial ?? "";
+            document.getElementById("cliente-email").textContent = cliente.email ?? "";
+
+            datosCliente.style.display = "block";
+        });
+
+        let indice = @Model.Detalles.Count;
+
+        function agregarFila() {
+            const tbody = document.querySelector("#tabla-detalles tbody");
+
+            const fila = document.createElement("tr");
+
+            fila.innerHTML = `
+                <td>
+                    <select name="Detalles[${indice}].ProductoId" class="form-control">
+                        <option value="">Seleccione un producto</option>
+                        @foreach (var producto in productos!)
+                        {
+                                <text><option value="@producto.Value">@producto.Text</option></text>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <input name="Detalles[${indice}].Cantidad" class="form-control" type="number" min="1" value="1" />
+                </td>
+            `;
+
+            tbody.appendChild(fila);
+            indice++;
+        }
+
+            const productosLista = @Html.Raw(Json.Serialize(ViewData["ProductosJson"]));
+        const productosPorId = {};
+
+        productosLista.forEach(producto => {
+            productosPorId[producto.productoId] = producto;
+        });
+
+        const cortes = [200, 100, 50, 20, 10, 5, 2, 1, 0.50, 0.20, 0.10];
+
+        function calcularTotal() {
+            let total = 0;
+
+            document.querySelectorAll("#tabla-detalles tbody tr").forEach(fila => {
+                const productoId = fila.querySelector("select").value;
+                const cantidad = parseInt(fila.querySelector("input").value) || 0;
+                const producto = productosPorId[productoId];
+
+                if (producto && cantidad > 0) {
+                    total += producto.precio * cantidad;
+                }
+            });
+
+            document.getElementById("total-pagar").textContent = total.toFixed(2);
+            calcularCambio();
+        }
+
+        function calcularCambio() {
+            const total = parseFloat(document.getElementById("total-pagar").textContent) || 0;
+            const pagado = parseFloat(document.getElementById("monto-pagado").value) || 0;
+            const cambio = Math.max(0, pagado - total);
+
+            document.getElementById("cambio").textContent = cambio.toFixed(2);
+
+            const detalle = document.getElementById("detalle-cambio");
+            detalle.innerHTML = "";
+
+            if (cambio <= 0) {
+                detalle.style.display = "none";
+                return;
+            }
+
+            let restante = Math.round(cambio * 100);
+            let html = "<strong>Dar cambio con:</strong><ul>";
+
+            cortes.forEach(corte => {
+                const corteCentavos = Math.round(corte * 100);
+                const cantidad = Math.floor(restante / corteCentavos);
+
+                if (cantidad > 0) {
+                    restante -= cantidad * corteCentavos;
+                    html += `<li>${cantidad} x Bs ${corte.toFixed(2)}</li>`;
+                }
+            });
+
+            html += "</ul>";
+            detalle.innerHTML = html;
+            detalle.style.display = "block";
+        }
+
+        document.addEventListener("change", calcularTotal);
+        document.addEventListener("input", calcularTotal);
+        document.getElementById("monto-pagado").addEventListener("input", calcularCambio);
+    </script>
 }

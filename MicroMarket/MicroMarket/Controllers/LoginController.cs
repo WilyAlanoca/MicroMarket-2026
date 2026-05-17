@@ -55,20 +55,28 @@ namespace MicroMarket.Controllers
                 .FirstOrDefaultAsync(v => v.Email == email);
 
             bool passwordValid = false;
-            if (vendedor?.PasswordHash != null)
+
+            if (!string.IsNullOrWhiteSpace(vendedor?.PasswordHash))
             {
-                var result = _passwordHasher.VerifyHashedPassword(vendedor, vendedor.PasswordHash, password);
-
-                if (result == PasswordVerificationResult.Success || result == PasswordVerificationResult.SuccessRehashNeeded)
+                try
                 {
-                    passwordValid = true;
+                    var result = _passwordHasher.VerifyHashedPassword(vendedor, vendedor.PasswordHash, password);
 
-                    // 4. Rehash si es necesario
-                    if (result == PasswordVerificationResult.SuccessRehashNeeded)
+                    if (result == PasswordVerificationResult.Success || result == PasswordVerificationResult.SuccessRehashNeeded)
                     {
-                        vendedor.PasswordHash = _passwordHasher.HashPassword(vendedor, password);
-                        await _context.SaveChangesAsync();
+                        passwordValid = true;
+
+                        // 4. Rehash si es necesario
+                        if (result == PasswordVerificationResult.SuccessRehashNeeded)
+                        {
+                            vendedor.PasswordHash = _passwordHasher.HashPassword(vendedor, password);
+                            await _context.SaveChangesAsync();
+                        }
                     }
+                }
+                catch (FormatException)
+                {
+                    passwordValid = false;
                 }
             }
 
@@ -79,12 +87,17 @@ namespace MicroMarket.Controllers
                 _cache.Remove(lockoutKey);
 
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, vendedor.VendedorId.ToString()),
-            new Claim(ClaimTypes.Name, vendedor.Nombre ?? string.Empty),
-            new Claim(ClaimTypes.Email, vendedor.Email ?? string.Empty),
-            new Claim("Rol", vendedor.Rol.ToString()) // ✅ Mejor que ClaimTypes.Role
-        };
+                {
+                    new Claim(ClaimTypes.NameIdentifier, vendedor.VendedorId.ToString()),
+                    new Claim(ClaimTypes.Name, vendedor.Nombre ?? string.Empty),
+                    new Claim(ClaimTypes.Email, vendedor.Email ?? string.Empty),
+
+                    // Rol oficial para User.IsInRole(...) y [Authorize(Roles = "...")]
+                    new Claim(ClaimTypes.Role, vendedor.Rol.ToString()),
+
+                    // Opcional: rol numérico si tu sistema lo necesita
+                    new Claim("RolId", ((int)vendedor.Rol).ToString())
+                };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
@@ -95,6 +108,11 @@ namespace MicroMarket.Controllers
                 };
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
+
+                HttpContext.Session.SetInt32("Rol", (int)vendedor.Rol);
+                HttpContext.Session.SetInt32("VendedorId", vendedor.VendedorId);
+                HttpContext.Session.SetString("Nombre", vendedor.Nombre ?? string.Empty);
+                HttpContext.Session.SetString("Email", vendedor.Email ?? string.Empty);
 
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     return LocalRedirect(returnUrl);
