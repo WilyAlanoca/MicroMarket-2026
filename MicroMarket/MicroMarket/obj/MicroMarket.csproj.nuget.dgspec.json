@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj": {}
+    "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj": {}
   },
   "projects": {
-    "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj": {
+    "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj",
+        "projectUniqueName": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj",
         "projectName": "MicroMarket",
-        "projectPath": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj",
-        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\MicroMarket\\obj\\",
+        "projectPath": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\MicroMarket.csproj",
+        "packagesPath": "C:\\Users\\Wele\\.nuget\\packages\\",
+        "outputPath": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Wele\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
