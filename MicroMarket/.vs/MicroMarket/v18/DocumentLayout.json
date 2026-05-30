@@ -71,8 +71,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Clientes\\Edit.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-30T02:00:19.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T02:00:19.162Z"
             },
             {
               "$type": "Document",
@@ -84,8 +83,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Clientes\\Create.cshtml",
               "ViewState": "AgIAABgAAAAAAAAAAAAAACEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-30T01:59:35.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T01:59:35.072Z"
             },
             {
               "$type": "Document",
@@ -97,8 +95,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Ventas\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-30T01:57:28.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T01:57:28.885Z"
             },
             {
               "$type": "Document",
@@ -110,8 +107,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Proveedors\\Create.cshtml",
               "ViewState": "AgIAACQAAAAAAAAAAAAAACsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-30T01:54:35.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T01:54:35.725Z"
             },
             {
               "$type": "Document",
@@ -123,8 +119,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Proveedors\\Edit.cshtml",
               "ViewState": "AgIAACcAAAAAAAAAAAAAADYAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-30T01:53:51.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T01:53:51.586Z"
             },
             {
               "$type": "Document",
@@ -136,8 +131,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Productoes\\Edit.cshtml",
               "ViewState": "AgIAADkAAAAAAAAAAAAAAEAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-30T01:49:56.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T01:49:56.585Z"
             },
             {
               "$type": "Document",
@@ -149,8 +143,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Productoes\\Index.cshtml",
               "ViewState": "AgIAAFcAAAAAAAAAAAAAAGAAAAB3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-30T01:42:05.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T01:42:05.322Z"
             },
             {
               "$type": "Document",
@@ -162,8 +155,7 @@
               "RelativeToolTip": "MicroMarket\\Views\\Vendedors\\Edit.cshtml",
               "ViewState": "AgIAACQAAAAAAAAAAAAAADMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-29T22:37:26.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-29T22:37:26.164Z"
             }
           ]
         }
