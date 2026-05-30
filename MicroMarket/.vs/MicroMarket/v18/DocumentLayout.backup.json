@@ -1,12 +1,173 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Clases\\MicroMarket-2026\\MicroMarket\\",
-  "Documents": [],
+  "WorkspaceRootPath": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\models\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\models\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\ventas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\ventas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\clientes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\clientes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\clientes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\clientes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\productoes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\productoes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\proveedors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\proveedors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\proveedors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\proveedors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\productoes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\productoes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|e:\\documents\\github\\micromarket-2026\\micromarket\\micromarket\\views\\vendedors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56F5F004-804B-45BD-A11A-BE2DDC30DFEA}|MicroMarket\\MicroMarket.csproj|solutionrelative:micromarket\\views\\vendedors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Venta.cs",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Models\\Venta.cs",
+              "RelativeDocumentMoniker": "MicroMarket\\Models\\Venta.cs",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Models\\Venta.cs",
+              "RelativeToolTip": "MicroMarket\\Models\\Venta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T02:06:55.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Clientes\\Edit.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Clientes\\Edit.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Clientes\\Edit.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Clientes\\Edit.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-30T02:00:19.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Clientes\\Create.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Clientes\\Create.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Clientes\\Create.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Clientes\\Create.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-30T01:59:35.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Ventas\\Create.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Ventas\\Create.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Ventas\\Create.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Ventas\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-30T01:57:28.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Proveedors\\Create.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Proveedors\\Create.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Proveedors\\Create.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Proveedors\\Create.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-30T01:54:35.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Proveedors\\Edit.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Proveedors\\Edit.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Proveedors\\Edit.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Proveedors\\Edit.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADYAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-30T01:53:51.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Productoes\\Edit.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Productoes\\Edit.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Productoes\\Edit.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Productoes\\Edit.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-30T01:49:56.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Productoes\\Index.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Productoes\\Index.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Productoes\\Index.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Productoes\\Index.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGAAAAB3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-30T01:42:05.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Vendedors\\Edit.cshtml",
+              "RelativeDocumentMoniker": "MicroMarket\\Views\\Vendedors\\Edit.cshtml",
+              "ToolTip": "E:\\Documents\\GitHub\\MicroMarket-2026\\MicroMarket\\MicroMarket\\Views\\Vendedors\\Edit.cshtml",
+              "RelativeToolTip": "MicroMarket\\Views\\Vendedors\\Edit.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T22:37:26.164Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
