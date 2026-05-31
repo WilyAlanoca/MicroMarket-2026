@@ -18,6 +18,7 @@ namespace MicroMarket.Models
 
         [Required(ErrorMessage = "El nombre es obligatorio.")]
         [StringLength(80, ErrorMessage = "El nombre no puede exceder los 80 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", ErrorMessage = "El nombre solo puede contener letras.")]
         public string? Nombre { get; set; }
 
         [Required(ErrorMessage = "El correo electrónico es obligatorio.")]
@@ -25,8 +26,8 @@ namespace MicroMarket.Models
         public string? Email { get; set; }
 
         [Required(ErrorMessage = "El número celular es obligatorio.")]
-        [Phone(ErrorMessage = "El formato del número de celular no es válido.")]
-        [StringLength(8, ErrorMessage = "El número de celular no puede exceder los 8 dígitos.")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "El número celular debe tener 8 dígitos.")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "El celular solo puede contener números.")]
         public string? Celular { get; set; }
 
         [Required(ErrorMessage = "La dirección es obligatoria.")]

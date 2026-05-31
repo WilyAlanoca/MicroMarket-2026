@@ -18,6 +18,7 @@ namespace MicroMarket.Models
 
         [Required(ErrorMessage = "El nombre es obligatorio.")]
         [StringLength(80, ErrorMessage = "El nombre no puede exceder los 80 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", ErrorMessage = "El nombre solo puede contener letras.")]
         public string? NombreRazonSocial { get; set; }
 
         [Required(ErrorMessage = "El correo electrónico es obligatorio.")]

@@ -23,7 +23,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="NombreRazonSocial" class="control-label"></label>
-                <input asp-for="NombreRazonSocial" class="form-control" />
+                <input asp-for="NombreRazonSocial"
+                       class="form-control"
+                       autocomplete="off"
+                       oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')" />
                 <span asp-validation-for="NombreRazonSocial" class="text-danger"></span>
             </div>
             <div class="form-group">

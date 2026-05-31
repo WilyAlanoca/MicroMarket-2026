@@ -15,7 +15,10 @@
             <input type="hidden" asp-for="VendedorId" />
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
+                <input asp-for="Nombre"
+                       class="form-control"
+                       autocomplete="off"
+                       oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -30,7 +33,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" />
+                <input asp-for="Telefono"
+                       class="form-control"
+                       autocomplete="off"
+                       inputmode="numeric"
+                       maxlength="8"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8)" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
