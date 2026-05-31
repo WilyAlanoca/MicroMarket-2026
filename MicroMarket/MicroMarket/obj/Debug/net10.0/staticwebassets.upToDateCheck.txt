@@ -4,7 +4,10 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\Fondo\micromarket-con-pago-automatico.jpg
 wwwroot\fotos\4045ebf6-55d6-4f48-8aa1-2345bb9551a8.webp
+wwwroot\fotos\68538797-e989-4f59-8cef-909c78ff0a04.jpg
+wwwroot\fotos\907cd52c-154e-4a68-8aa5-e78a4bfc23b6.png
 wwwroot\fotos\a7d9b8dc-dd54-4a82-b66a-06bad7882edf.webp
+wwwroot\fotos\cd85ed35-e370-4aa0-9158-7d7e609b6c24.jpg
 wwwroot\fotos\ebe81d43-3fd7-4e3b-a673-6fe2dca311e9.webp
 wwwroot\fotos\f9e5463e-8c97-4fbf-822d-63502c515449.webp
 wwwroot\js\site.js

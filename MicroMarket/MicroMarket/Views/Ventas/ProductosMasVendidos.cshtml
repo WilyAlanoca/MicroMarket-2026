@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "Productos más vendidos";
+    var mesSeleccionado = ViewBag.MesSeleccionado;
+}
+
+<style>
+    .grafico-panel {
+        max-width: 1100px;
+        background: #ffffff;
+        padding: 24px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .filtro-panel {
+        max-width: 340px;
+        margin-bottom: 18px;
+    }
+
+    #graficoProductos {
+        background: #ffffff;
+    }
+</style>
+
+<h1 class="mb-3">Productos más vendidos</h1>
+
+<form asp-action="ProductosMasVendidos" method="get" class="filtro-panel">
+    <label class="control-label fw-bold">Filtrar por mes</label>
+    <select name="mes" class="form-control" onchange="this.form.submit()">
+        <option value="1" selected="@(mesSeleccionado == 1)">Enero</option>
+        <option value="2" selected="@(mesSeleccionado == 2)">Febrero</option>
+        <option value="3" selected="@(mesSeleccionado == 3)">Marzo</option>
+        <option value="4" selected="@(mesSeleccionado == 4)">Abril</option>
+        <option value="5" selected="@(mesSeleccionado == 5)">Mayo</option>
+        <option value="6" selected="@(mesSeleccionado == 6)">Junio</option>
+        <option value="7" selected="@(mesSeleccionado == 7)">Julio</option>
+        <option value="8" selected="@(mesSeleccionado == 8)">Agosto</option>
+        <option value="9" selected="@(mesSeleccionado == 9)">Septiembre</option>
+        <option value="10" selected="@(mesSeleccionado == 10)">Octubre</option>
+        <option value="11" selected="@(mesSeleccionado == 11)">Noviembre</option>
+        <option value="12" selected="@(mesSeleccionado == 12)">Diciembre</option>
+    </select>
+</form>
+
+<div class="grafico-panel">
+    <canvas id="graficoProductos"></canvas>
+</div>
+
+<br />
+
+<a asp-action="Index" class="btn btn-secondary">Volver a ventas</a>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const productos = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.Productos));
+    const cantidades = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.Cantidades));
+
+    const coloresBase = [
+    'rgba(54, 162, 235, 0.85)',
+    'rgba(255, 99, 132, 0.85)',
+    'rgba(255, 206, 86, 0.85)',
+    'rgba(75, 192, 192, 0.85)',
+    'rgba(153, 102, 255, 0.85)',
+    'rgba(255, 159, 64, 0.85)',
+    'rgba(46, 204, 113, 0.85)',
+    'rgba(231, 76, 60, 0.85)',
+    'rgba(52, 73, 94, 0.85)',
+    'rgba(241, 196, 15, 0.85)'
+    ];
+
+    const colores = productos.map((_, index) => coloresBase[index % coloresBase.length]);
+    const bordes = colores.map(color => color.replace('0.85', '1'));
+
+    const ctx = document.getElementById('graficoProductos');
+
+    new Chart(ctx, {
+    type: 'bar',
+    data: {
+    labels: productos,
+    datasets: [{
+    label: 'Cantidad vendida',
+    data: cantidades,
+    backgroundColor: colores,
+    borderColor: bordes,
+    borderWidth: 2
+    }]
+    },
+    options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+    title: {
+    display: true,
+    text: 'Gráfico de ventas en mes @ViewBag.NombreMes',
+    color: '#222',
+    font: {
+    size: 24,
+    weight: 'bold'
+    },
+    padding: {
+    top: 10,
+    bottom: 24
+    }
+    },
+    legend: {
+    display: false
+    },
+    tooltip: {
+    backgroundColor: '#222',
+    titleColor: '#fff',
+    bodyColor: '#fff',
+    borderColor: '#444',
+    borderWidth: 1
+    }
+    },
+    scales: {
+    x: {
+    title: {
+    display: true,
+    text: 'Nombre del producto',
+    color: '#222',
+    font: {
+    size: 14,
+    weight: 'bold'
+    }
+    },
+    ticks: {
+    color: '#222',
+    font: {
+    size: 12,
+    weight: 'bold'
+    },
+    maxRotation: 35,
+    minRotation: 25
+    },
+    grid: {
+    color: '#eeeeee'
+    }
+    },
+    y: {
+    beginAtZero: true,
+    title: {
+    display: true,
+    text: 'Cantidad de productos',
+    color: '#222',
+    font: {
+    size: 14,
+    weight: 'bold'
+    }
+    },
+    ticks: {
+    color: '#222',
+    precision: 0,
+    font: {
+    size: 12,
+    weight: 'bold'
+    }
+    },
+    grid: {
+    color: '#d4d4d4'
+    }
+    }
+    }
+    }
+    });
+</script>

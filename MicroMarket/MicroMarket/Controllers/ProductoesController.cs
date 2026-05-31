@@ -134,6 +134,8 @@ namespace MicroMarket.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("FotoFile");
+
             if (producto.FotoFile != null && producto.FotoFile.Length > 0)
             {
                 var extension = Path.GetExtension(producto.FotoFile.FileName).ToLowerInvariant();

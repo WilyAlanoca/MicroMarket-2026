@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MicroMarket.Contexto;
@@ -26,6 +27,44 @@ namespace MicroMarket.Controllers
         {
             var myContext = _context.Ventas.Include(v => v.Cliente);
             return View(await myContext.ToListAsync());
+        }
+
+        // GRAFICO PARA LOS PRODUCTOS MAS VENDIDOS
+
+        public async Task<IActionResult> ProductosMasVendidos(int? mes)
+        {
+            int mesSeleccionado = mes ?? DateTime.Now.Month;
+
+            var productosMasVendidos = await _context.DetalleVentas
+                .Include(d => d.Producto)
+                .Include(d => d.Venta)
+                .Where(d => d.Venta.FechaEmision.Month == mesSeleccionado)
+                .GroupBy(d => new
+                {
+                    d.ProductoId,
+                    d.Producto.Descripcion
+                })
+                .Select(g => new
+                {
+                    Producto = g.Key.Descripcion,
+                    Cantidad = g.Sum(d => d.Cantidad)
+                })
+                .OrderByDescending(x => x.Cantidad)
+                .Take(10)
+                .ToListAsync();
+
+            string[] nombresMeses =
+            {
+        "", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    };
+
+            ViewBag.Productos = productosMasVendidos.Select(x => x.Producto).ToList();
+            ViewBag.Cantidades = productosMasVendidos.Select(x => x.Cantidad).ToList();
+            ViewBag.MesSeleccionado = mesSeleccionado;
+            ViewBag.NombreMes = nombresMeses[mesSeleccionado];
+
+            return View();
         }
 
         // GET: Ventas/Details/5
@@ -239,6 +278,11 @@ namespace MicroMarket.Controllers
         // GET: Ventas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetInt32("Rol") != 1)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -247,6 +291,7 @@ namespace MicroMarket.Controllers
             var venta = await _context.Ventas
                 .Include(v => v.Cliente)
                 .FirstOrDefaultAsync(m => m.VentaId == id);
+
             if (venta == null)
             {
                 return NotFound();
@@ -260,6 +305,11 @@ namespace MicroMarket.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetInt32("Rol") != 1)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             var venta = await _context.Ventas.FindAsync(id);
             if (venta != null)
             {

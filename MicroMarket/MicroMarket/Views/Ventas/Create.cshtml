@@ -62,7 +62,13 @@
 
     <div class="form-group mb-3">
         <label for="monto-pagado">Monto pagado</label>
-        <input id="monto-pagado" type="number" step="0.01" min="0" class="form-control" />
+            <input id="monto-pagado"
+                   type="text"
+                   inputmode="decimal"
+                   autocomplete="off"
+                   class="form-control"
+                   placeholder="Ej: 18,00"
+                   oninput="validarMontoPagado(this)" />
     </div>
 
     <h5>Cambio: Bs <span id="cambio">0.00</span></h5>
@@ -138,7 +144,7 @@
             indice++;
         }
 
-            const productosLista = @Html.Raw(Json.Serialize(ViewData["ProductosJson"]));
+        const productosLista = @Html.Raw(Json.Serialize(ViewData["ProductosJson"]));
         const productosPorId = {};
 
         productosLista.forEach(producto => {
@@ -146,6 +152,27 @@
         });
 
         const cortes = [200, 100, 50, 20, 10, 5, 2, 1, 0.50, 0.20, 0.10];
+
+        function validarMontoPagado(input) {
+            let valor = input.value;
+
+            // Solo números y coma
+            valor = valor.replace(/[^0-9,]/g, '');
+
+            // Permitir solo una coma
+            const partes = valor.split(',');
+            if (partes.length > 2) {
+                valor = partes[0] + ',' + partes.slice(1).join('');
+            }
+
+            // Máximo 2 decimales
+            if (valor.includes(',')) {
+                const [entero, decimal] = valor.split(',');
+                valor = entero + ',' + decimal.slice(0, 2);
+            }
+
+            input.value = valor;
+        }
 
         function calcularTotal() {
             let total = 0;
@@ -166,7 +193,8 @@
 
         function calcularCambio() {
             const total = parseFloat(document.getElementById("total-pagar").textContent) || 0;
-            const pagado = parseFloat(document.getElementById("monto-pagado").value) || 0;
+            const valorPagado = document.getElementById("monto-pagado").value.replace(',', '.');
+            const pagado = parseFloat(valorPagado) || 0;
             const cambio = Math.max(0, pagado - total);
 
             document.getElementById("cambio").textContent = cambio.toFixed(2);

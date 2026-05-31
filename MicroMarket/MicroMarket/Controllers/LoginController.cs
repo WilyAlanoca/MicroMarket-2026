@@ -151,6 +151,26 @@ namespace MicroMarket.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Login");
         }
+        [HttpPost, ActionName("Delete")]
+
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (HttpContext.Session.GetInt32("Rol") != 1)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            var venta = await _context.Ventas.FindAsync(id);
+            if (venta != null)
+            {
+                _context.Ventas.Remove(venta);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
 

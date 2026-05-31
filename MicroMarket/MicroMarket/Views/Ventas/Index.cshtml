@@ -1,13 +1,21 @@
 ﻿@model IEnumerable<MicroMarket.Models.Venta>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Index";
+    var rol = HttpContextAccessor.HttpContext.Session.GetInt32("Rol");
 }
 
 <h1>Ventas</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
+    <a asp-action="ProductosMasVendidos"
+       class="btn btn-success"
+       onclick="abrirGrafico(event, this.href)">
+        Productos más vendidos
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -28,25 +36,56 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaEmision)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Complemento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoTotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                    <a asp-action="Details" asp-route-id="@item.VentaId" class="btn btn-sm btn-info me-1">Recibo</a>
-                    
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaEmision)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Complemento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@item.VentaId"
+                       class="btn btn-sm btn-info me-2">
+                        Recibo
+                    </a>
+
+                    @if (rol == 1)
+                    {
+                        <form asp-action="Delete"
+                              asp-route-id="@item.VentaId"
+                              method="post"
+                              class="d-inline"
+                              onsubmit="return confirm('¿Seguro que deseas borrar esta venta?');">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Borrar
+                            </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@section Scripts {
+    <script>
+        function abrirGrafico(event, url) {
+            event.preventDefault();
+
+            window.open(
+                url,
+                'ProductosMasVendidos',
+                'width=1000,height=700,top=80,left=180,resizable=yes,scrollbars=yes'
+            );
+        }
+    </script>
+}
